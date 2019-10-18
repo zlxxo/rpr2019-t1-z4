@@ -2,7 +2,7 @@ package ba.unsa.etf.rpr;
 
 public class Korpa {
     private final int maksimalanBrojArtikala = 50;
-    private Artikl[] artikli = new Artikl[50];
+    private Artikl[] artikli = new Artikl[maksimalanBrojArtikala];
     private int brojArtikala = 0;
 
     public boolean dodajArtikl(Artikl artikl) {
@@ -21,6 +21,10 @@ public class Korpa {
         this.artikli = artikli;
     }
 
+    public int getBrojArtikala() {
+        return brojArtikala;
+    }
+
     public Artikl izbaciArtiklSaKodom(String kod) {
         Artikl artikl = null;
         for(int i = 0; i < brojArtikala; i++) {
@@ -32,7 +36,7 @@ public class Korpa {
 
                 brojArtikala--;
                 artikli[brojArtikala] = null;
-                break;
+                i--;
             }
         }
         return artikl;

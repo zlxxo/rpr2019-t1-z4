@@ -2,7 +2,7 @@ package ba.unsa.etf.rpr;
 
 public class Supermarket {
     private final int maksimalanBrojArtikala = 1000;
-    private Artikl[] artikli = new Artikl[1000];
+    private Artikl[] artikli = new Artikl[maksimalanBrojArtikala];
     private int brojArtikala = 0;
 
     public void dodajArtikl(Artikl artikl) {
@@ -19,6 +19,10 @@ public class Supermarket {
         this.artikli = artikli;
     }
 
+    public int getBrojArtikala() {
+        return brojArtikala;
+    }
+
     public Artikl izbaciArtiklSaKodom(String kod) {
         Artikl artikl = null;
         for(int i = 0; i < brojArtikala; i++) {
@@ -29,7 +33,7 @@ public class Supermarket {
                 }
                 brojArtikala--;
                 artikli[brojArtikala] = null;
-                break;
+                i--;
             }
         }
         return artikl;
