@@ -60,25 +60,17 @@ class SupermarketTest {
     }
 
     @Test
-    void izbaciDupliArtikal() {
+    void dodajArtikal() {
         Supermarket supermarket = new Supermarket();
-        for(int i = 1; i <= 5; i++) {
-            supermarket.dodajArtikl(new Artikl("Žvake", 1, "1"));
-        }
-        assertEquals(5, supermarket.getBrojArtikala());
-        supermarket.izbaciArtiklSaKodom("1");
-        assertEquals(0, supermarket.getBrojArtikala());
-
-        boolean postoji = false;
+        Artikl artikl = new Artikl("Lopta", 20, "1234");
+        supermarket.dodajArtikl(artikl);
+        assertEquals(1, supermarket.getBrojArtikala());
         Artikl[] artikli = supermarket.getArtikli();
-        for(int i = 0; i < 1000; i++) {
-            Artikl artikl = artikli[i];
-            if(artikl != null) {
-                postoji =  true;
-                break;
-            }
+        int brojArtikala = 0;
+        for (int i = 0; i < 50; i++) {
+            if (artikli[i] != null) brojArtikala++;
         }
 
-        assertFalse(postoji);
+        assertEquals(1, brojArtikala);
     }
 }
