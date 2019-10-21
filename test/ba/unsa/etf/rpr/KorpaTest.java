@@ -57,35 +57,27 @@ class KorpaTest {
     }
 
     @Test
-    void izbaciDupliArtikal() {
-        Korpa korpa = new Korpa();
-        for(int i = 1; i <= 5; i++) {
-            korpa.dodajArtikl(new Artikl("Žvake", 1, "1"));
-        }
-        assertEquals(5, korpa.getBrojArtikala());
-        korpa.izbaciArtiklSaKodom("1");
-        assertEquals(0, korpa.getBrojArtikala());
-
-        boolean postoji = false;
-        Artikl[] artikli = korpa.getArtikli();
-        for(int i = 0; i < 50; i++) {
-            Artikl artikl = artikli[i];
-            if(artikl != null) {
-                postoji =  true;
-                break;
-            }
-        }
-
-        assertFalse(postoji);
-    }
-
-    @Test
     void dajUkupnuCijenuArtikala() {
         Korpa korpa = new Korpa();
         for(int i = 1; i <= 5; i++) {
             korpa.dodajArtikl(new Artikl("Žvake", 1, "1"));
         }
         assertEquals(5, korpa.dajUkupnuCijenuArtikala());
+    }
+
+    @Test
+    void dodajArtikal() {
+        Korpa korpa = new Korpa();
+        Artikl artikl = new Artikl("Lopta", 20, "1234");
+        korpa.dodajArtikl(artikl);
+        assertEquals(1, korpa.getBrojArtikala());
+        Artikl[] artikli = korpa.getArtikli();
+        int brojArtikala = 0;
+        for(int i = 0; i < 50; i++) {
+            if(artikli[i] != null) brojArtikala++;
+        }
+
+        assertEquals(1, brojArtikala);
     }
 
 }
