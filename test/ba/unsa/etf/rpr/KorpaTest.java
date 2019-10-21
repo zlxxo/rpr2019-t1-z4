@@ -79,4 +79,13 @@ class KorpaTest {
         assertFalse(postoji);
     }
 
+    @Test
+    void dajUkupnuCijenuArtikala() {
+        Korpa korpa = new Korpa();
+        for(int i = 1; i <= 5; i++) {
+            korpa.dodajArtikl(new Artikl("Žvake", 1, "1"));
+        }
+        assertEquals(5, korpa.dajUkupnuCijenuArtikala());
+    }
+
 }

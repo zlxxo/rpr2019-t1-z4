@@ -34,6 +34,7 @@ public class Supermarket {
                 brojArtikala--;
                 artikli[brojArtikala] = null;
                 i--;
+                break;
             }
         }
         return artikl;
